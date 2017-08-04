@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Casamento Bruna e Daniel">
+  <meta name="author" content="Daniel Fernando Lourusso">
+  <title>Bruna e Daniel</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      color: #fff;
+    }
+    body {
+      background-color: #070707;
+      background-image: url(bg.jpg);
+      background-size: cover;
+      background-repeat: none;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    table {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+    .names {
+      font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+      color: #fff;
+      font-size: 5rem;
+    }
+    .wait {
+      /*font-family: "Helvetica Neue",Helvetica,Arial,cursive;*/
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    .countdown-box {
+      padding-top: 60px;
+    }
+    .countdown-box span.group {
+      padding-bottom: 15px;
+    }
+    .countdown-box span {
+      display: inline-block;
+      margin-left: 5px;
+      min-width: 100px;
+      text-align: center;
+      font-weight: normal;
+    }
+    .countdown-box span:first-child {
+      margin-left: 0;
+    }
+    .countdown-box span.number {
+      font-size: 2.5rem;
+      display: block;
+      color: #fff;
+      font-weight: 300;
+    }
+    .countdown-box span.unit {
+      font-size: 1rem;
+      display: block;
+      color: #ccc;
+      font-weight: 300;
+    }
+    @media (max-width: 768px) {
+      .names {font-size: 3rem;}
+      .countdown-box span.number{font-size: 2rem;}
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tbody>
+      <tr>
+        <td >
+          <div class="names">
+            Bruna e Daniel
+          </div>
+          <div class="wait">
+            Aguarde...
+          </div>
+          <div id="countdown-box" class="countdown-box">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script src="jquery-1.11.3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    /* ======= Countdown ========= */
+  // set the date we're counting down to
+    var target_date = new Date("May 19, 2018, 17:45:00").getTime();
+
+    // variables for time units
+    var days, hours, minutes, seconds;
+
+    // get tag element
+    var countdown =  document.getElementById("countdown-box");
+    var days_span = document.createElement("SPAN");
+    days_span.className = 'days group';
+    countdown.appendChild(days_span);
+    var hours_span = document.createElement("SPAN");
+    hours_span.className = 'hours group';
+    countdown.appendChild(hours_span);
+    var minutes_span = document.createElement("SPAN");
+    minutes_span.className = 'minutes group';
+    countdown.appendChild(minutes_span);
+    var secs_span = document.createElement("SPAN");
+    secs_span.className = 'secs group';
+    countdown.appendChild(secs_span);
+
+    // update the tag with id "countdown" every 1 second
+    setInterval(function () {
+
+        // find the amount of "seconds" between now and target
+        var current_date = new Date().getTime();
+        var seconds_left = (target_date - current_date) / 1000;
+
+        // do some time calculations
+        days = parseInt(seconds_left / 86400);
+        seconds_left = seconds_left % 86400;
+
+        hours = parseInt(seconds_left / 3600);
+        seconds_left = seconds_left % 3600;
+
+        minutes = parseInt(seconds_left / 60);
+        seconds = parseInt(seconds_left % 60);
+
+        // format countdown string + set tag value.
+        days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit script">dias</span>';
+        hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit script">horas</span>';
+        minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit script">minutos</span>';
+        secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit script">segundos</span>';
+
+
+        //countdown.innerHTML = days + "d, " + hours + "h, "
+       // + minutes + "m, " + seconds + "s";
+
+    }, 1000);
+  </script>
+</body>
+</html>
